@@ -1,0 +1,16 @@
+Part 1
+- Create a while loop that increments the earliest expected until the first bus is found
+- Inside the while loop, have a for loop to go through each value in the bus ids
+- When bus ids are found, store that id and time it arrives in a variable and break the loop
+- Subtract the original value from the time the earliest bus arrives and multiply it by the bus id
+
+Part 2
+- define a variable that starts at 100000000000000 (for identifying the time that contains the answer)
+- create a while loop that continues until all of the listed bus IDs depart at offsets matching their positions in the list
+- increment the variable that stores answer
+- create a for loop that goes from 0 to the last index in the list
+- Each iteration, check if the variable that stores answer + the index is divisble the number at the index of the list of ids
+	- If not, break; else, continue
+	- If the value in the list is x, continue
+- If it gets through the whole loop, break the while loop and return the variable that stores answer
+- 

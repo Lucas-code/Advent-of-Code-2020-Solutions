@@ -1,0 +1,39 @@
+Part 1
+- Store Left/Right and Up/Down values of the ship's position and current orientation in a list (shouldn't be absolute values)
+- Store all directions (NESW) in a list
+- Loop through each value in PA system
+- Interpret value (First is a letter, the rest is a number) - list slicing
+- Value in PA System changes the value of ship's position/rotation
+	- Position increase/decrease
+		- If Ship's current rotation is North/East, add the value of the position change, else subtract that
+	- Change in rotation
+		- If the ship will be rotated right, the value should be positive, or else negative
+		- When ship is rotated, divide the value by 90
+		- Get the ship's current rotation and locate its index in the direction list
+		- Change the ship's rotation to that index in the list plus the modified value that the ship is supposed to rotate
+			- If the index plus the modified value is less than 0 or greater than 3, add/subtract 4 to that respectively
+			
+- Continue loop until it ends
+- Get the position values from ship position list and add the ABSOLUTE values of the x/y positions
+
+Part 2
+- Store Left/Right and Up/Down values of the ship's position in a list
+- Store distance between ship and waypoint (waypoint pos)
+- Loop through each value in PA system
+- Interpret value (First is a letter, the rest is a number) - list slicing
+- Process value
+	- If 'F', multiply the quantity by the distance between ship and waypoint and apply it to the ship
+	- If in "NESW", change the distance between waypoint and ship
+	- If 'R' or 'L':
+		- Divide quantity by 90
+		- If 'L', multiply result by -1
+		- Else, make a loop for the same amount of times as that value
+			- In each iteration
+				- If 'L'
+					- Move waypoint pos[0] to ship pos[1]
+					- Move waypoint pos[1] times -1 to ship pos[0] 
+				- If 'R'
+					- Move waypoint pos[0] times -1 to ship pos[1]
+					- Move waypoint pos[1] to ship pos[0]
+- Continue loop until it ends
+- Get the position values from ship position list and add the ABSOLUTE values of the x/y positions

@@ -1,0 +1,48 @@
+part 1
+	Variables
+		Mask(str) - changes constantly during execution
+		memory_location(str) - stores the memory location of current line
+		memory (dictionary) - key is memory location and the value is the value stated in the current line being executed after the bitmask is applied to it
+		initial_val(int) - the value that needs the bitmask to be applied to it first
+		binary_val(str) - stores the value to be added to memory in binary format
+		final_val(int) - binary_val after bitmask is applied converted to denary
+	Functions
+		conversion(number to be converted,"denary" or "binary") - Converts numbers from denary to binary and vice versa
+			Denary to binary
+				declare variable set as empty string
+				declare variable equal to denary
+				For loop that iterates 36 times but starts from 35 to 0
+					checks if denary number is greater than 2 to the power of the iteration number
+						If so, add 1 to the end of string and take away 2 to the power of the iteration number from the denary
+						Else, add 0 to end of string and continue
+				denary should be equal to 0
+				return the variable that stored the string
+			Binary to denary
+				declare variable that stores the converted answer
+				For loop that goes through numbers -1 to -36
+					if binary[iteration number] equals 1, add 2 to the power of (the iteration number + 1) to the answer
+					Else, continue
+				return the converted answer
+	Loop through each line in puzzle input
+		Interpret each line and change variables based on values in that line using RegEx
+		binary_val = conversion(initial_val,"binary")
+		For loop that iterates 36 times
+			compare binary_val[iteration num] with mask[iteration num]
+				if mask[iteration num] equals 'X', continue
+				Else, binary_val[iteration num] equals mask[iteration num]
+		final_val = conversion(binary_val,"denary")
+		memory[memory_location] = final_val
+	Add all values inside the keys of the memory and return it
+part 2
+	(same method as before, but bitmasking process is different)
+	Bitmask the memory address
+		Convert memory address to binary
+		where mask = 1, the memory address is altered
+		where mask = 'X', record the index in a list
+		declare a variable that is the sum of '0'*[amount of Xs] and '1'*[amount of Xs]
+		create a set that stores all possible distinct permutations the same length of the amount of Xs
+		loop through each tuple in the set
+			for loop that repeats the same length of the list where indexes are stored
+				memory_address[index_list[index]] = tuple[index]
+			memory[memory_address] = value
+		
